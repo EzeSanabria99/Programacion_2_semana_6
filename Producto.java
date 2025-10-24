@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+ */
 package javaapplication2;
 
 import java.util.ArrayList;
@@ -44,7 +45,6 @@ public Producto(String id, String nombre, double precio, int cantidad, Categoria
                           " (" + categoria.getDescription() + ")");
     }
     
-    // Getters y Setters
     public String getId() { return id; }
     public String getNombre() { return nombre; }
     public double getPrecio() { return precio; }
@@ -59,13 +59,11 @@ class Inventario {
         this.productos = new ArrayList<>();
     }
     
-    // 1. Agregar producto
     public void agregarProducto(Producto p) {
         productos.add(p);
         System.out.println("Producto '" + p.getNombre() + "' agregado al inventario.");
     }
     
-    // 2. Listar todos los productos
     public void listarProductos() {
         if (productos.isEmpty()) {
             System.out.println("No hay productos en el inventario.");
@@ -77,7 +75,6 @@ class Inventario {
         }
     }
     
-    // 3. Buscar producto por ID
     public Producto buscarProductoPorId(String id) {
         for (Producto p : productos) {
             if (p.getId().equals(id)) {
@@ -87,7 +84,6 @@ class Inventario {
         return null;
     }
     
-    // 4. Eliminar producto por ID
     public boolean eliminarProducto(String id) {
         Producto producto = buscarProductoPorId(id);
         if (producto != null) {
@@ -99,7 +95,6 @@ class Inventario {
         return false;
     }
     
-    // 5. Actualizar stock
     public boolean actualizarStock(String id, int nuevaCantidad) {
         Producto producto = buscarProductoPorId(id);
         if (producto != null) {
@@ -111,9 +106,8 @@ class Inventario {
         return false;
     }
     
-    // 6. Filtrar por categoría
     public void filtrarPorCategoria(CategoriaProducto categoria) {
-        System.out.println("\n=== PRODUCTOS DE CATEGORÍA: " + categoria + " ===");
+        System.out.println(" PRODUCTOS DE CATEGORÍA: " + categoria + " ");
         boolean encontrado = false;
         for (Producto p : productos) {
             if (p.getCategoria() == categoria) {
@@ -126,7 +120,6 @@ class Inventario {
         }
     }
     
-    // 7. Obtener total de stock
     public int obtenerTotalStock() {
         int total = 0;
         for (Producto p : productos) {
@@ -135,7 +128,6 @@ class Inventario {
         return total;
     }
     
-    // 8. Obtener producto con mayor stock
     public Producto obtenerProductoConMayorStock() {
         if (productos.isEmpty()) return null;
         
@@ -148,9 +140,8 @@ class Inventario {
         return mayorStock;
     }
     
-    // 9. Filtrar productos por precio
     public void filtrarProductosPorPrecio(double min, double max) {
-        System.out.println("\n=== PRODUCTOS ENTRE $" + min + " Y $" + max + " ===");
+        System.out.println(" PRODUCTOS ENTRE $" + min + " Y $" + max + " ");
         boolean encontrado = false;
         for (Producto p : productos) {
             if (p.getPrecio() >= min && p.getPrecio() <= max) {
@@ -163,12 +154,13 @@ class Inventario {
         }
     }
     
-    // 10. Mostrar categorías disponibles
     public void mostrarCategoriasDisponibles() {
-        System.out.println("\n=== CATEGORÍAS DISPONIBLES ===");
+        System.out.println(" CATEGORÍAS DISPONIBLES ");
         for (CategoriaProducto cat : CategoriaProducto.values()) {
             System.out.println("- " + cat + ": " + cat.getDescription());
         }
     }
 }
+
+
 
